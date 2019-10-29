@@ -25,7 +25,7 @@ public class Main : MonoBehaviour
         int ndx = Random.Range(0, prefabEnemies.Length);
         GameObject go = Instantiate<GameObject>(prefabEnemies[ndx]);
         float enemyPadding = enemyDefaultPadding;
-        if(go.GetComponent<BoundsCheck>()!= null)
+        if (go.GetComponent<BoundsCheck>() != null)
         {
             enemyPadding = Mathf.Abs(go.GetComponent<BoundsCheck>().radius);
         }
@@ -39,4 +39,15 @@ public class Main : MonoBehaviour
 
         Invoke("SpawnEnemy", 1f / enemySpawnPerSecond);
     }
+
+    public void DelayedRestart(float delay)
+    {
+        Invoke("Restart", delay);
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene("_Scene_0");
+    }
+
 }

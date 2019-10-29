@@ -10,6 +10,7 @@ public class Hero : MonoBehaviour
     public float speed = 30;
     public float rollMult = -45;
     public float pitchMult = 30;
+    public float gameRestartDelay = 2f;
 
     [Header("Set Dynamically")]
     [SerializeField]
@@ -75,6 +76,7 @@ public class Hero : MonoBehaviour
             if (value < 0)
             {
                 Destroy(this.gameObject);
+                Main.S.DelayedRestart(gameRestartDelay);
             }
         }
     }
